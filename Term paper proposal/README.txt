@@ -1,0 +1,3 @@
+Free Gift Cards For Gamers!
+
+Being an esports player myself I know what it is to have poor setup and not having sufficient funds to upgrade to a better one. We thought of making this website inorder to help a lot of people get some help to get the in game content/micro transactions and the gear they wanted.There were 3 people involved in this idea's contribution back in my undergraduation days. The paper would involve writing all the technologies that we were supposed to use to make the website, the backstory for the idea, the Introduction, obstacles that we have faced and a wireframe.
