@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello There!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000000;
+            background: -webkit-linear-gradient(to right, #434343, #000000);
+            background: linear-gradient(to right, #434343, #000000);
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .main-container a {
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        .main-container h1 {
+            text-align: center;
+            background: #000000;
+            background: linear-gradient(to left, #000000 0%, #FFFFFF 50%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);
+            animation: typewriter 4s steps(2000) 1s 1 normal both,
+                blinkTextCursor 500ms steps(200) infinite normal;
+
+        }
+
+        .main-container h2 {
+            text-align: center;
+            background: #000000;
+            background: linear-gradient(to left, #000000 0%, #FFFFFF 50%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);
+            animation: typewriter 4s steps(2000) 1s 1 normal both,
+                blinkTextCursor 500ms steps(200) infinite normal;
+
+
+        }
+
+        .main-container a {
+            font-weight: bolder;
+            font-size: 40px;
+            text-align: center;
+            background: #000000;
+            background: linear-gradient(to left, #000000 0%, #FFFFFF 50%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            transform: translateY(-50%);
+            animation: typewriter 4s steps(2000) 1s 1 normal both,
+                blinkTextCursor 500ms steps(200) infinite normal;
+
+        }
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 24em;
+            }
+        }
+
+        @keyframes blinkTextCursor {
+            from {
+                border-right-color: rgba(255, 255, 255, .75);
+            }
+
+            to {
+                border-right-color: transparent;
+            }
+        }
+
+        #caution{
+text-align: center;
+color: HSL(356, 100%, 50%);
+        }
+
+        #googleform{
+            text-align: center;
+            color: HSL(356, 100%, 50%);
+        }
+        .sheet{
+            font-size: larger;
+            margin-top: 50px;
+            display: flex;
+            color: HSL(356, 100%, 50%);
+           justify-content: center;
+        }
+        .sheet a{
+            color: HSL(356, 100%, 50%);
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1 id="caution">Please Hard reload and Empty cache to see the updated page</h1>
+    <h1 id="googleform">The Form data is being stored in a Google sheet. The link is given below</h1>
+    <div class="sheet">
+        <a  href="https://docs.google.com/spreadsheets/d/1bW2YPI7QPQayuCn7mvpAxrvY6kq6mLtyDynVEhH4SGc/edit#gid=0" target="_blank">A Lite Version of Database!</a>
+    </div>
+    
+    
+    <div class="main-container">
+        
+        <h1>Well, Hello There!..</h1>
+        <h2>Nice to meet you Again! </h2>
+        <h2>Click on the link below to access my site.</h2>
+        <a href="file:///C:/Users/harsh/OneDrive/Desktop/Game/site.html" target="_blank">Visit me here!</a>
+    </div>
+
+
+
+</body>
+
+</html>
