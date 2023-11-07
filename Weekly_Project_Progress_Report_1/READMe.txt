@@ -30,7 +30,7 @@ Planned Enhancements:
 - Integration of Google Maps with dynamic adjustment features based on the selected location.
 - Planned tasks for the upcoming week include performing CRUD (Create, Read, Update, Delete) operations, database structure assessment and resolution, as well as the creation of the Login page and implementation of routing using JavaScript.
 
-Achievements/ Accomplishments:
+Achievements/ Accomplishments /I am proud of below accomplishments:
 
 1. Successfully developed the HTML framework for the Sign Up and Login pages.
 
