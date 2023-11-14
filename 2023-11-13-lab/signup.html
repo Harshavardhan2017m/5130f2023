@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9; /* Light Gray */
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        h2 {
+            color: #555; /* Dark Gray */
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: inline-block;
+        }
+
+        label, input, button {
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838; /* Darker Green */
+        }
+
+        input[type="text"], input[type="password"] {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 8px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #d9534f; /* Red */
+        }
+    </style>
+    <script>
+        // Your existing JavaScript code remains unchanged
+    </script>
+</head>
+<body>
+    <h2>Sign Up</h2>
+
+    <form action="/signup" method="post" onsubmit="return validateForm()">
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>
