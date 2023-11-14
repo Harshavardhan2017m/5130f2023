@@ -34,7 +34,7 @@ Planned Enhancements:
 5. Engineered a responsive user interface, fostering an intuitive and adaptive dashboard experience across various devices.
 6. Implemented responsive integration of Google Maps, tailored to dynamically adjust to user-selected locales, enhancing the overall interactive experience.
 
-Achievements/ Accomplishments:
+Achievements/ Accomplishments / I am proud of this accomplishments this week:
 -----------------------
 1. I've effectively designed the CSS and layouts for the Client page. Employing responsive CSS and JavaScript ensures that the website dynamically adjusts its layout and content, catering to optimal viewing experiences on both desktop and mobile devices.
 
