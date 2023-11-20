@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearby trails</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWgLwWLb4QAENBy_z7nYoNPu3xrRUqpas&libraries=places"></script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('trail.jpeg') no-repeat center center fixed; /* Adjust your image URL */
+            background-size: cover;
+            color: #333;
+        }
+
+        /* Header Styles */
+        h2 {
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7); /* Slightly darker background for better readability */
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        /* Map and List Styles */
+        #map, #trailsList {
+            margin: 10px auto;
+            width: 90%;
+            max-width: 800px; /* Ensures the map and list don't get too wide on large screens */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #map {
+            height: 400px;
+        }
+
+        #trailsList {
+            list-style: none;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        }
+
+        #trailsList li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #trailsList li:last-child {
+            border-bottom: none;
+        }
+
+        /* Button Styles */
+        button {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #388e3c; /* A darker shade for the hover effect */
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            #map {
+                height: 300px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            button {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Nearby Trails</h2>
+    <button onclick="initMap()">Find Trails Near Me</button>
+    <div id="map"></div>
+    <ul id="trailsList"></ul> <!-- Container for the trails list -->
+    <script src="script.js"></script>
+</body>
+</html>
