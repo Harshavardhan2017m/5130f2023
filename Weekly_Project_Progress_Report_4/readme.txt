@@ -36,7 +36,7 @@ Planned Enhancements:
 5. Designed a responsive user interface to ensure an intuitive and adaptable dashboard experience.
 6. Responsively integrated Google Maps, tailored to user-selected locations, enhancing the overall interactivity of the platform.
 
-Achievements/ Accomplishments:
+Achievements/ Accomplishments I am proud of this week:
 -----------------------
 1. Completed the HTML structure for the Client page and crafted the trails page by incorporating crucial HTML and JavaScript code.
 2. Successfully integrated the Google Maps API to gather information on nearby sightseeing spots, encompassing details such as names, distances, and directions.
