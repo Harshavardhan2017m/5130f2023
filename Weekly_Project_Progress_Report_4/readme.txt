@@ -2,7 +2,7 @@ Project Name: All-in-One Outdoor Activity Website
 
 Project Concept: We aspire to create an efficient and user-centric website tailored for outdoor enthusiasts. This central hub aims to be the ultimate destination for in-depth information on top-notch beaches, hiking trails, and picturesque viewpoints.
 
-Week 3 Progress Report:
+Week 4 Progress Report:
 During the third week, we incorporated features related to upcoming events in nearby trails, beaches, and sightseeing spots. These were seamlessly integrated with Google Maps to facilitate easy location tracking. These additions provide users with comprehensive information and navigation support, enhancing their experience in outdoor and cultural explorations. The integration is designed to simplify trip planning and discovery, making it more intuitive and user-friendly.
 
 Simultaneously, efforts are in progress on the backend to establish robust database interactions for managing user data on the Client and login pages. The Client page serves as the focal point for the tourism or adventure-themed website, emphasizing tours, events, and exploration. To witness the implemented functionalities, run the adventure.html file, where the Client page and its features become visible upon clicking the respective buttons.
