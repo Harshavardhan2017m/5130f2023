@@ -1,6 +1,0 @@
-Name :Harshavardhan Reddy Mandhadi
-Student Id : 02071086
-UML Email Id : Harshavardhan_mandhadi@student.uml.edu
-Cs email: hmandhad@cs.uml.edu
-Total_No_of_Group_Member : 3
-Team_Member:  Eswarasanthosh Kumar Mamillapalli, Harshavardhan Reddy Mandhadi,Sravani Dhanekula
