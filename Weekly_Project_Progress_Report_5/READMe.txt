@@ -35,7 +35,7 @@ Planned Enhancements:
 3. Allowing users to rate and review each travel destination.
 4. Introducing an interactive map to help with navigation.
 
-Achievements/ Accomplishments:
+Achievements/ Accomplishments I am proud of this week:
 -----------------------
 1. The page is specifically designed for those who love hiking and adventures, featuring a list of well-known trails and hiking locations.
 2. It provides comprehensive information about each trail, including how hard it is, how long it is, how long it might take to complete, and its scenic features.
