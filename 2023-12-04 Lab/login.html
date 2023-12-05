@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#28a745">
+     <meta name="description" content="Login into the account with proper details.">
+     <link rel="manifest" href="http://localhost:8000/iwslab4/manifest.json">
+    
+     <style>
+         body, html {
+             height: 100%;
+             margin: 0;
+             font-family: 'Roboto', sans-serif;
+         }
+         body {
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             padding: 10px;
+             background-color: #731313;
+             background-image: url(''); /* URL of your background image */
+             background-size: cover; /* Cover the entire page */
+             background-repeat: no-repeat; /* Do not repeat the image */
+             background-position: center; /* Center the image */
+         }
+         #MainForm {
+             width: 100%;
+             max-width: 330px;
+             padding: 15px;
+             margin: auto;
+             
+         }
+         .form-floating {
+             margin-bottom: 10px;
+         }
+         .form-floating label, #forgotpasslabel, .btn {
+             font-family: 'Roboto', sans-serif; 
+             text-align: left;
+         }
+         .btn {
+             width: 100%;
+             padding: 10px;
+             margin-top: 5px;
+         }
+         @media (min-width: 768px) {
+             #MainForm {
+                 width: 50%;
+                 max-width: 500px;
+             }
+         }
+         h2 {
+             font-family: 'Roboto', sans-serif;
+         }
+         .location-info {
+            text-align: center;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+        }
+     </style>
+     
+</head>
+
+<body>
+    <form id="MainForm" class="bg-white shadow rounded">
+        <h2 class="text-center mb-4">Sign-In</h2>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="emailInp" placeholder="name@example.com">
+            <label for="emailInp">Email address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="passwordInp" placeholder="Password">
+            <label for="passwordInp">Password (7-11 characters)</label>
+            
+        </div>
+        <div class="d-flex flex-column align-items-start"> <!-- Changed to align-items-start -->
+            <label id="forgotpasslabel" class="btn-link">Forgot Password</label>
+            <!-- Changed to btn-success for a green color -->
+            <button type="submit" class="btn btn-success text-center">Login</button>
+            <!-- Changed to btn-success for a green color -->
+            <a href="register.html" class="btn btn-success mt-2 text-center">Sign Up</a>
+            <!-- Changed to btn-success for a green color -->
+            <a href="guest_login.html" class="btn btn-success mt-2 text-center">Guest Mode</a> 
+        </div>
+       
+        <div id="location-info">
+            <p>Your Location: <span id="location"></span></p>
+            <p>Weather: <span id="weather"></span></p>
+            <p>Local Time: <span id="local-time"></span></p>
+            <p>Currency: <span id="currency"></span></p>
+            <p>Local Language: <span id="local-language"></span></p>
+            <p>Local Facts: <span id="local-facts"></span></p>
+        </div>
+              
+        <!-- Move the install button outside of the form -->
+        <div id="installContainer" class="d-none">
+            <button id="installBtn" type="button" class="btn btn-success mt-2 text-center">Install App</button>
+        </div>
+        
+
+    </form>
+    
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous">
+        </script>
+
+        <script type="module">
+            
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+            import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+            import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+            const firebaseConfig = {
+              apiKey: "AIzaSyCu0akfkosIocT-V07Aq0gfffqlwb-ZSNQ",
+              authDomain: "iwsproject-374df.firebaseapp.com",
+              projectId: "iwsproject-374df",
+              storageBucket: "iwsproject-374df.appspot.com",
+              messagingSenderId: "167278613195",
+              appId: "1:167278613195:web:99c3fcb5724c7b4012c14e"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore();
+            const auth = getAuth(app);
+
+            let EmailInp = document.getElementById('emailInp');
+            let PassInp = document.getElementById('passwordInp');
+            let MainForm = document.getElementById('MainForm');
+            let ForgotPassLabel = document.getElementById('forgotpasslabel');
+            
+
+            
+            let SignInUser = evt => {
+                evt.preventDefault();
+
+                signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+                .then(async(credentials)=>{
+                    var ref = doc(db, "UserAuthList", credentials.user.uid);
+                    const docSnap = await getDoc(ref);
+
+                    if(docSnap.exists()){
+                        sessionStorage.setItem("user-info", JSON.stringify({
+                            firstname: docSnap.data().firstname,
+                            lastname: docSnap.data().lasttname,
+
+                        }))
+                        sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                        window.location.href = "details_login.html";
+                    }
+                })
+                .catch((error)=>{
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                })
+            }
+
+            let ForgotPassword = ()=>{
+                sendPasswordResetEmail(auth, EmailInp.value)
+                .then(()=>{
+                    alert("A Password Reset Link has been sent to your email");
+                })
+                .catch((error)=>{
+                    console.log(error.code);
+                    console.log(error.message);
+                })
+            }
+
+            MainForm.addEventListener('submit', SignInUser);
+            ForgotPassLabel.addEventListener('click', ForgotPassword);
+        </script>
+        <script>
+            window.onload = function () {
+                fetch('http://ip-api.com/json')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const userLocation = data.city;
+                        const countryCode = data.countryCode;
+                        document.getElementById('location').textContent = userLocation;
+            
+                        // Fetching weather data
+                        const weatherApiUrl = `https://api.weatherapi.com/v1/current.json?key=fc11e6005ff94cdf89522741231411&q=${userLocation}`;
+                        fetch(weatherApiUrl)
+                            .then((response) => response.json())
+                            .then((weatherData) => {
+                                document.getElementById('weather').textContent = `${weatherData.current.condition.text}, ${weatherData.current.temp_c}°C`;
+            
+                                // Displaying local time
+                                const timezone = weatherData.location.tz_id;
+                                displayLocalTime(timezone);
+                            })
+                            .catch((error) => {
+                                console.error('Error fetching weather data:', error);
+                                document.getElementById('weather').textContent = 'Unable to fetch weather data';
+                            });
+            
+                        // Displaying currency, language, and local facts
+                        document.getElementById('currency').textContent = getCurrencyByCountry(countryCode);
+                        document.getElementById('local-language').textContent = getLocalLanguageByCountry(countryCode);
+                        document.getElementById('local-facts').textContent = getLocalFactsByCountry(countryCode);
+            
+                        
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching location data:', error);
+                    });
+            };
+            
+            function displayLocalTime(timezone) {
+                try {
+                    const currentTime = new Date().toLocaleTimeString('en-US', { timeZone: timezone });
+                    document.getElementById('local-time').textContent = currentTime;
+                } catch (error) {
+                    console.error('Error displaying local time:', error);
+                    document.getElementById('local-time').textContent = 'Unable to display local time';
+                }
+            }
+            
+            function getCurrencyByCountry(countryCode) {
+                // Simplified implementation
+                return countryCode === 'US' ? 'USD $ ' : 'EUR';
+            }
+            
+            function getLocalLanguageByCountry(countryCode) {
+                // Hypothetical implementation
+                const languages = {
+                    'US': 'English',
+                    'FR': 'French',
+                    'DE': 'German',
+                    // Add more countries and languages as needed
+                };
+                return languages[countryCode] || 'Unknown';
+            }
+            
+            function getLocalFactsByCountry(countryCode) {
+                // Hypothetical implementation
+                const facts = {
+                    'US': 'Home to the Grand Canyon',
+                    'FR': 'Famous for the Eiffel Tower',
+                    'DE': 'Known for its beer culture',
+                    // Add more countries and facts as needed
+                };
+                return facts[countryCode] || 'No facts available';
+            }
+            
+            // Check if 'visitCount' is stored in localStorage
+            if (localStorage.getItem('visitCount')) {
+                // Increment the count
+                localStorage.setItem('visitCount', Number(localStorage.getItem('visitCount')) + 1);
+            } else {
+                // If not, initialize it with 1
+                localStorage.setItem('visitCount', 1);
+            }
+
+            // Display the visit count on the webpage
+            document.getElementById('location-info').innerHTML += `<p>You have visited this site ${localStorage.getItem('visitCount')} times.</p>`;
+            
+            
+        </script>
+        <!-- Add the following script at the end of your body tag -->
+        <script>
+            let deferredPrompt;
+
+            
+            window.addEventListener('beforeinstallprompt', (e) => {
+                console.log('beforeinstallprompt event fired');
+            
+                e.preventDefault();
+                deferredPrompt = e;
+                showInstallPromotion();
+            });
+            
+
+            function showInstallPromotion() {
+                // Remove the 'hidden' class from the install button container
+                document.getElementById('installContainer').classList.remove('d-none');
+            }
+
+            // Add event listener to the install button
+            document.getElementById('installBtn').addEventListener('click', (e) => {
+                // Hide the app provided install promotion
+                document.getElementById('installContainer').classList.add('d-none');
+                // Show the install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+
+            // Optionally, listen to the 'appinstalled' event to do something after the app is installed
+            window.addEventListener('appinstalled', (evt) => {
+                // App is installed
+                console.log('App is installed');
+            });
+        </script>
+        <script>
+             // Register Service Worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(registration) {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+                });
+            }
+        </script>
+
+            
+        
+</body>
+
+</html>

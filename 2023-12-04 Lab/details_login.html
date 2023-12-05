@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Successful</title>
+    <meta name="theme-color" content="#28a745">
+    <meta name="description" content="Login into the account with proper details.">
+    <link rel="manifest" href="http://localhost:8000/iwslab4/manifest.json">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eaeaea;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .container {
+            background-color: #ffffff;
+            width: 80%;
+            max-width: 350px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333333;
+            font-size: 16px;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login Successful</h2>
+    <p>You have logged in successfully with your details.</p>
+    <div class="footer">
+        Thank you for using our service.
+    </div>
+</div>
+<script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(function(error) {
+                console.log('Service Worker registration failed:', error);
+            });
+        });
+    }
+</script>
+</body>
+</html>
