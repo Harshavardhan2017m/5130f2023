@@ -32,7 +32,7 @@ References
 ----------
 1.https://lwebapp.com/en/post/event-bus  
 2.https://medium.com/@community_40479/buff-thetechnological-techniques-behind-the-magicc14869d110c  
-3.https://www.reddit.com/r/pcmasterrace/comments/ cgxwlb/i_briefly_looked_into_buffgame_and_i_wa nted_to/  
+3.https://www.reddit.com/r/pcmasterrace/comments/cgxwlb/i_briefly_looked_into_buffgame_and_i_wanted_to/  
  	 
  
  
